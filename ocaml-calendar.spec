@@ -3,7 +3,7 @@ Summary:	A library managing dates and times
 Summary(pl.UTF-8):	Biblioteka do obsługi daty i czasu
 Name:		ocaml-calendar
 Version:	1.10
-Release:	1
+Release:	2
 License:	LGPL + OCaml linking exception
 Group:		Libraries
 URL:		http://www.lri.fr/~signoles/prog.en.html
@@ -22,7 +22,6 @@ over dates and times.
 Summary:	A library managing dates and times
 Summary(pl.UTF-8):	Biblioteka do obsługi daty i czasu
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
 
 %description devel
