@@ -1,32 +1,40 @@
 %define		ocaml_ver	1:3.10.0
-Summary:	A library managing dates and times
-Summary(pl.UTF-8):	Biblioteka do obsługi daty i czasu
+Summary:	OCaml library managing dates and times
+Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
 Name:		ocaml-calendar
 Version:	1.10
 Release:	4
 License:	LGPL + OCaml linking exception
 Group:		Libraries
-URL:		http://www.lri.fr/~signoles/prog.en.html
 Source0:	http://www.lri.fr/~signoles/prog/calendar/calendar-%{version}.tar.gz
 # Source0-md5:	ab36c83c354644695cbf81165dc3757d
+URL:		http://www.lri.fr/~signoles/prog.en.html
 BuildRequires:	ocaml >= %{ocaml_ver}
 BuildRequires:	ocaml-findlib
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The Calendar library is a library providing a set of operations
+The Calendar library is an OCaml library providing a set of operations
 over dates and times.
 
+%description -l pl.UTF-8
+Calendar to biblioteka OCamla udostępniająca operacje na datach i
+czasie.
+
 %package devel
-Summary:	A library managing dates and times
-Summary(pl.UTF-8):	Biblioteka do obsługi daty i czasu
+Summary:	OCaml library managing dates and times
+Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
 Group:		Development/Libraries
 %requires_eq	ocaml
 
 %description devel
-The Calendar library is a library providing a set of operations
+The Calendar library is an OCaml library providing a set of operations
 over dates and times.
+
+%description devel -l pl.UTF-8
+Calendar to biblioteka OCamla udostępniająca operacje na datach i
+czasie.
 
 %prep
 %setup -q -n calendar-%{version}
@@ -37,7 +45,6 @@ over dates and times.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{calendar,stublibs}
 
 install src/*.cm[ixa]* src/*.a $RPM_BUILD_ROOT%{_libdir}/ocaml/calendar
