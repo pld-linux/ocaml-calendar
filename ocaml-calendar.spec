@@ -2,12 +2,12 @@
 Summary:	OCaml library managing dates and times
 Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
 Name:		ocaml-calendar
-Version:	1.10
-Release:	5
+Version:	2.01.1
+Release:	1
 License:	LGPL + OCaml linking exception
 Group:		Libraries
-Source0:	http://www.lri.fr/~signoles/prog/calendar/calendar-%{version}.tar.gz
-# Source0-md5:	ab36c83c354644695cbf81165dc3757d
+Source0:	http://forge.ocamlcore.org/frs/download.php/173/calendar-%{name}.tar.gz
+# Source0-md5:	a30974a97f718688198c5a5dc6235cff
 URL:		http://www.lri.fr/~signoles/prog.en.html
 BuildRequires:	ocaml >= %{ocaml_ver}
 BuildRequires:	ocaml-findlib
@@ -47,7 +47,7 @@ czasie.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{calendar,stublibs}
 
-install src/*.cm[ixa]* src/*.a $RPM_BUILD_ROOT%{_libdir}/ocaml/calendar
+install src/*.cm[ixa]* target/*.a $RPM_BUILD_ROOT%{_libdir}/ocaml/calendar
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -r tests/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
