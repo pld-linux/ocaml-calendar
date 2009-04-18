@@ -3,7 +3,7 @@ Summary:	OCaml library managing dates and times
 Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
 Name:		ocaml-calendar
 Version:	2.01.1
-Release:	1
+Release:	2
 License:	LGPL + OCaml linking exception
 Group:		Libraries
 Source0:	http://forge.ocamlcore.org/frs/download.php/173/calendar-%{name}.tar.gz
@@ -45,9 +45,13 @@ czasie.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
+export DESTDIR=$RPM_BUILD_ROOT
+export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
 install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{calendar,stublibs}
 
-install src/*.cm[ixa]* target/*.a $RPM_BUILD_ROOT%{_libdir}/ocaml/calendar
+%{__make} \
+	 install
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -r tests/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
@@ -56,6 +60,7 @@ cp -r tests/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/calendar
 echo 'directory = "+calendar"' >> META
 install META $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/calendar
+%{__sed} -i -e 's/calendarLib.cm[ox] //' $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/calendar/META
 
 %clean
 rm -rf $RPM_BUILD_ROOT
