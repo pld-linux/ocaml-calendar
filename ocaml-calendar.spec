@@ -13,7 +13,7 @@ Summary:	OCaml library managing dates and times
 Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
 Name:		ocaml-calendar
 Version:	2.04
-Release:	5
+Release:	6
 License:	LGPL + OCaml linking exception
 Group:		Libraries
 Source0:	http://forge.ocamlcore.org/frs/download.php/1481/calendar-%{version}.tar.gz
@@ -73,11 +73,6 @@ install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{calendar,stublibs}
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -pr tests/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-# move META for findlib
-install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/calendar
-%{__mv} $RPM_BUILD_ROOT%{_libdir}/ocaml/calendar/META $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/calendar
-echo 'directory = "+calendar"' >> $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/calendar/META
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -85,12 +80,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %dir %{_libdir}/ocaml/calendar
+%{_libdir}/ocaml/calendar/META
 %{_libdir}/ocaml/calendar/calendarLib.cma
 %{_libdir}/ocaml/calendar/calendarLib.cmo
 %if %{with ocaml_opt}
 %attr(755,root,root) %{_libdir}/ocaml/calendar/calendarLib.cmxs
 %endif
-%{_libdir}/ocaml/site-lib/calendar
 
 %files devel
 %defattr(644,root,root,755)
