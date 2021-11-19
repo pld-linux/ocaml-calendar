@@ -1,8 +1,8 @@
 #
 # Conditional build:
-%bcond_without	ocaml_opt	# skip building native optimized binaries (bytecode is always built)
+%bcond_without	ocaml_opt	# native optimized binaries (bytecode is always built)
 
-%ifnarch %{ix86} %{x8664} arm aarch64 ppc sparc sparcv9
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 ppc sparc sparcv9
 %undefine	with_ocaml_opt
 %endif
 
@@ -14,7 +14,7 @@ Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
 Name:		ocaml-calendar
 Version:	2.04
 Release:	6
-License:	LGPL + OCaml linking exception
+License:	LGPL v2.1 + OCaml linking exception
 Group:		Libraries
 Source0:	http://forge.ocamlcore.org/frs/download.php/1481/calendar-%{version}.tar.gz
 # Source0-md5:	625b4f32c9ff447501868fa1c44f4f4f
@@ -34,8 +34,8 @@ Calendar to biblioteka OCamla udostępniająca operacje na datach i
 czasie.
 
 %package devel
-Summary:	OCaml library managing dates and times
-Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu
+Summary:	OCaml library managing dates and times - development part
+Summary(pl.UTF-8):	Biblioteka OCamla do obsługi daty i czasu - część programistyczna
 Group:		Development/Libraries
 %requires_eq	ocaml
 Requires:	%{name} = %{version}-%{release}
@@ -51,8 +51,8 @@ calendar library.
 Calendar to biblioteka OCamla udostępniająca operacje na datach i
 czasie.
 
-Ten pakiet zawiera pliki niezbędne do tworzenia programów używających
-biblioteki calendar.
+Ten pakiet zawiera pliki niezbędne do tworzenia programów w OCamlu
+używających biblioteki calendar.
 
 %prep
 %setup -q -n calendar-%{version}
@@ -78,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc CHANGES COPYING README
 %dir %{_libdir}/ocaml/calendar
 %{_libdir}/ocaml/calendar/META
 %{_libdir}/ocaml/calendar/calendarLib.cma
